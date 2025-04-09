@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  aimiox-chat:
+    image: aimiox/amx-chat:latest
+    container_name: aimiox-chat
+    # Restart policy options:
+    # - "no" - Never restart (default)
+    # - "always" - Always restart regardless of exit status
+    # - "on-failure" - Restart only on non-zero exit status
+    # - "unless-stopped" - Always restart unless explicitly stopped
+    restart: on-failure
+    # Working directory inside the container
+    working_dir: /srv/amx
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./aimiox_ui_config.yaml:/srv/amx/aimiox_ui_config.yaml
+      - ./history:/root/.aichat/history
+    command: /usr/bin/chatui

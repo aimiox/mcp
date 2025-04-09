@@ -1,0 +1,85 @@
+# AimioX MCP Configuration
+# User-editable settings for the MCP Chat UI
+
+# ===== General Settings =====
+general:
+  debug_mode: false
+  log_level: INFO
+  amx_api_key: aimiox-public-mcp-key
+
+# ===== Chat UI Settings =====
+chatui:
+  port: 8080
+  
+  # Model settings
+  model:
+    default: openai:gpt-4o-mini
+    temperature: 0.7
+    system_prompt: You are a helpful AI assistant.
+    
+  # History/Session settings
+  history:
+    compressed: true
+    # Path where chat history will be stored (leave empty for default and Docker ~/.aichat/history)
+    path: ""
+  
+  # API settings
+  # Note that /chat/completions is auto appended to urls
+  api:
+    # OpenAI provider
+    openai:
+      api_key: YOUR_API_KEY
+      api_url: https://api.openai.com/v1
+      models: [gpt-4o-mini, gpt-4o]
+    
+    # Ollama provider
+    ollama:
+      api_url: http://localhost:11434/v1
+      models: [llama3.2:3b]
+
+    # Groq provider
+    groq:
+      api_key: YOUR_API_KEY
+      api_url: https://api.groq.com/openai/v1
+      models: [llama-3.3-70b-versatile]
+    
+    # Example of custom provider (uncomment and modify as needed)
+    # anthropic:
+    #   api_key: ${ANTHROPIC_API_KEY}
+    #   api_url: https://api.anthropic.com/v1
+    #   models: [claude-3-opus, claude-3-sonnet]
+    #
+    # azure_openai:
+    #   api_key: ${AZURE_OPENAI_API_KEY}
+    #   api_url: https://your-resource.openai.azure.com
+    #   models: [gpt-4-turbo, gpt-35-turbo]
+
+# ===== MCP Servers =====
+servers:
+  
+  # URL Fetcher
+  fetch:
+    type: stdio
+    name: URL Fetcher
+    description: Fetch web content and convert HTML to markdown
+    enabled: true
+    command: /usr/bin/fetch
+    args:
+
+  # IP Location
+  iplocation:
+    type: stdio
+    name: IP Location
+    description: Get location information for an IP address
+    enabled: true
+    command: /usr/bin/iplocation
+    args:
+
+  # Geocode
+  geocode:
+    type: http
+    name: Geocode
+    description: Geocode addresses to coordinates and reverse geocode coordinates to addresses
+    enabled: true
+    url: https://mcp.aimiox.com/v1/geocode/sse?amx_mcp_key=${general.amx_api_key}
+  
