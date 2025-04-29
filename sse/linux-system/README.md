@@ -1,6 +1,7 @@
 # 🖥️ Linux System MCP SSE Server
 
-The **aimiox Linux System MCP SSE Server** is a lightweight agent for exposing system telemetry, logs, and network information via SSE. It's designed for Ubuntu 22.04+ and integrates seamlessly with the OpenAI Agents SDK or any compatible MCP client.
+The **aimiox Linux System MCP SSE Server** is a lightweight agent for exposing system telemetry, logs, and network information via SSE. It's designed for Ubuntu 22.04+ and integrates seamlessly with the OpenAI Agents SDK or any compatible MCP client. 
+> ⚠️ **Note:** This server does **not support HTTPS** and is intended for use on **trusted local networks** or over a **secure VPN** connection.
 
 ## ✨ Features
 
@@ -43,7 +44,7 @@ OPENAI_API_KEY=your-openai-key-here
 Edit the following line in `linux_mcp_cli.py`:
 
 ```python
-MCP_LINUX_URL = "http://<mcp_ip_address>:<mcp_port>/events"
+MCP_LINUX_URL = "http://<mcp_ip_address>:<mcp_port>/sse"
 ```
 Replace <mcp_ip_address> and <mcp_port> with your actual server values.
 
