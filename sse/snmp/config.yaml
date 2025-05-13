@@ -1,0 +1,13 @@
+# aimiox SNMP MCP Server Configuration
+
+# Device configurations
+devices:
+  device1:
+    ip: 192.168.10.10
+    port: 161
+    version: 2
+    community: public
+    description: ubuntu server
+    tags:
+      - server
+  
