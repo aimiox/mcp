@@ -31,7 +31,7 @@ $ sudo docker run -it \
   -p 8001:8001 \
   -v $(pwd)/config.yaml:/app/config.yaml \
   -v $(pwd)/data:/app/data \
-  amx-snmp-mcp:latest
+  aimiox/amx-snmp-mcp:latest
 ```
 
 ### ⚙️ Configuration
@@ -81,6 +81,23 @@ python3 snmp_mcp_cli.py
 ### 4. Interact with the Agent
 
 The client will connect to the SSE server and allow you to chat with SNMP MCP.
+
+#### 🤖 Example Response (via GPT-4.1-mini)
+
+**User Prompt:**
+> 💻 You: How can you help me with SNMP devices?
+
+**AI Response:**
+> 🤖 Assistant:
+> I can help you with SNMP devices in several ways, including:
+
+> 1. Retrieving information from SNMP-enabled devices, such as system details, interface statistics, CPU and memory usage, disk I/O, and more.
+> 2. Performing SNMP walk operations to browse whole OID subtrees or get specific OID values.
+> 3. Listing all SNMP devices that you have configured.
+> 4. Providing details about available MIB modules and specific objects within those MIBs.
+> 5. Fetching historical SNMP data if it's available for monitoring trends over time.
+
+> You can ask me to query specific data points or perform walks on your SNMP devices and I will retrieve the relevant information for you. How would you like to start?
 
 
 ## 📞 Support
